@@ -3,17 +3,17 @@
 # job configuration for setting up and submitting jobs,
 # archive and clean artifacts, defining target and input scripts
 job:
-  target: flashx
-  setup:
-    - flashOptions.sh
-    - flashBuild.sh
-  submit:
-    - flashRun.sh
   input:
     - flash.toml
   archive:
-    - flashx
-    - amrex.pc
+    - flash.par
+    - "*_hdf5_*"
+    - "*.log"
+    - "*.out"
   clean:
-    - flashx
-    - amrex.pc
+    - flash.par
+    - "*_hdf5_*"
+    - "*.log"
+    - "unitTest*"
+    - "*.out"
+    - "*.log"

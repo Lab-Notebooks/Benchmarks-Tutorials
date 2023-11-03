@@ -1,4 +1,0 @@
-# YAML configuration file for `jobrunner`.
-job:
-  submit:
-    - flashInput.sh
