@@ -1,0 +1,74 @@
+[Parfile]
+  # Inverse of Reynolds Number
+  ins_invReynolds = 0.00460
+  
+  # 1/Fr**2, Fr (Froude Number)
+  ins_gravY = -1.0
+  
+  # Gas density and viscosity scaled by liquid
+  mph_rhoGas = 1.21e-3
+  mph_muGas = 2.45e-4
+  mph_iPropSmear = 1.0
+  
+  # Inverse Weber Number
+  mph_invWeber = 0.0083
+  
+  # bubble radius
+  sim_bubbleRadius = 0.25
+
+  #       Grid dimensionality and geometry
+  geometry = "cartesian"
+  
+  #       Size of computational volume
+  xmin = -0.5
+  xmax = 0.5
+  ymin = -0.5
+  ymax = 1.5
+ 
+  #       Boundary conditions
+  xl_boundary_type = "noslip_ins"
+  xr_boundary_type = "noslip_ins"
+  yl_boundary_type = "noslip_ins"
+  yr_boundary_type = "noslip_ins"
+  zl_boundary_type = "noslip_ins"
+  zr_boundary_type = "noslip_ins"
+  
+  #       Simulation (grid, time, I/O) parameters
+  run_comment = "Rising Bubble problem"
+  log_file = "INS_Rising_Bubble.log"
+  basenm = "INS_Rising_Bubble_"
+  restart = ".false."
+  nend = 10000000
+  tmax = 10
+  ins_cflFlg = 0
+  ins_cfl = 0.05
+  ins_sigma = 0.05
+  ins_dtSpec = 1.0e-4
+  dtinit = 1.0e-4
+  dtmax = 1.0e-4
+  tstep_change_factor = 1.0
+  ins_pressureCorrect = ".false."
+  
+  plot_var_1 = "pres"
+  plot_var_2 = "velx"
+  plot_var_3 = "vely"
+  plot_var_4 = "dfun"
+  
+  checkpointFileIntervalTime = 1.0
+  checkpointFileIntervalStep = 0
+  
+  plotFileIntervalTime = 1.0
+  plotFileIntervalStep = 0
+  
+  # AMR parameters
+  nblockx = 3
+  nblocky = 6
+  nrefs = 10000
+  
+  lrefine_min = 1
+  lrefine_max = 1
+ 
+  # AMReX Poisson Solver Parameters
+  gr_amrexMG_composite_solve = ".TRUE."
+  gr_amrexMG_Tol = 1e-13
+  gr_amrexMG_max_iter = 200
