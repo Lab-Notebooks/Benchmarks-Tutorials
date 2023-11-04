@@ -1,19 +1,37 @@
-[Fluid-Properties]
-  ins_invReynolds = 0.00460
+[IO-RESTART]
+  restart = false
+  nend = 10000000
+  tmax = 5
+  checkpointFileIntervalTime = 1.0
+  checkpointFileIntervalStep = 0
+  plotFileIntervalTime = 1.0
+  plotFileIntervalStep = 0
+  plot_var_1 = "pres"
+  plot_var_2 = "velx"
+  plot_var_3 = "vely"
+  plot_var_4 = "dfun"
+
+[FLUID-PROPERTIES]
+  ins_invReynolds = 0.0285
   ins_gravY = -1.0
-  mph_rhoGas = 1.21e-3
-  mph_muGas = 2.45e-4
+  mph_rhoGas = 0.1
+  mph_muGas = 0.1
   mph_iPropSmear = 1.0
-  mph_invWeber = 0.0083
+  mph_invWeber = 0.1
+
+[SCALES]
+  length = 0.5
+  time = 0.714
+  velocity = 0.7
   
-[AMR-Resolution]
-  nblockx = 3
-  nblocky = 6
+[AMR-RESOLUTION]
+  nblockx = 5
+  nblocky = 10
   nrefs = 10000
   lrefine_min = 1
   lrefine_max = 1
 
-[Temporal-Stability]
-  ins_dtSpec = 1.0e-4
-  dtinit = 1.0e-4
-  dtmax = 1.0e-4
+[TEMPORAL-STABILITY]
+  ins_dtSpec = 1.0e-3
+  dtinit = 1.0e-3
+  dtmax = 1.0e-3

@@ -14,10 +14,8 @@
 # when either setting up or submitting a job
 #
 
-# instrument information to enable built-in features
-instrument: flashx
+instrument: Flash-X
 
-# schedular configuration
 schedular:
   command: sbatch
   options:
@@ -25,7 +23,6 @@ schedular:
     - "#SBATCH -t 0-30:00"
     - "#SBATCH --job-name=fb-perf"
 
-# job configuration
 job:
   setup:
     - config.sh

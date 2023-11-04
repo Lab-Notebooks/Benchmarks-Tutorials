@@ -1,0 +1,128 @@
+# Input file to set runtime parameters
+
+[HEATER]
+  sim_heaterName = "flow_boiling"
+  sim_numHeaters = 2
+  sim_nucSeedRadius = 0.1
+
+[HEATER.0001]
+  dim = 1
+  xmin = -20.0
+  xmax = -5.0
+  ymin = 0.0
+  ymax = 1e-13
+  zmin = -2.5
+  zmax = 2.5
+  wallTemp = 2.0
+  advAngle = 90.0
+  rcdAngle = 45.0
+  velContact = 0.2
+  nucWaitTime = 0.4
+  numSites = 90
+  nucSeedRadius = 0.1
+
+[HEATER.0002]
+  dim = 1
+  xmin = 5.0
+  xmax = 20.0
+  ymin = 0.0
+  ymax = 1e-13
+  zmin = -2.5
+  zmax = 2.5
+  wallTemp = 1.0
+  advAngle = 90.0
+  rcdAngle = 45.0
+  velContact = 0.2
+  nucWaitTime = 0.4
+  numSites = 70
+  nucSeedRadius = 0.1
+
+[DOMAIN]
+  geometry = "cartesian"
+  xmin = -25.0
+  xmax = 25.0
+  ymin = 0.0
+  ymax = 5.0
+
+[SCALES]
+  length = 1e-3
+  time = 10e-3
+
+[PERFORMANCE]
+  CSVSummaryAllProcs = true
+
+[FLUID-PROPERTIES]
+  ins_invReynolds = 0.0042
+  mph_rhoGas = 0.0083
+  mph_muGas = 1.0
+  mph_iPropSmear = 1.5
+  mph_thcoGas = 0.25
+  mph_CpGas = 0.83
+  mph_Stefan = 0.5298
+  mph_Tsat = 0.15
+  mph_invWeber = 1.0
+  ht_Prandtl = 8.4
+  ins_inflowVelScale = 1.0
+  ins_gravY = -1.0
+
+[OUTLET-PARAMETERS]
+  sim_outletBuffer = 2.0
+  sim_heaterShowInfo = false
+
+[BOUNDARY-CONDITIONS]
+  xl_boundary_type = "inflow_ins"
+  xr_boundary_type = "outflow_ins"
+  yl_boundary_type = "noslip_ins"
+  yr_boundary_type = "noslip_ins"
+
+[EVOLUTION-PARAMETERS]
+  run_comment = "Flow Boiling problem"
+  log_file = "INS_Flow_Boiling.log"
+  basenm = "INS_Flow_Boiling_"
+  ins_cflFlg = 1
+  ins_cfl = 0.05
+  ins_sigma = 0.05
+  ins_dtSpec = 0.1e-3
+  dtinit = 0.1e-3
+  dtmax = 0.4e-3
+  tstep_change_factor = 1.01
+  ins_pressureCorrect = false
+  ins_intSchm = 2
+
+[PLOT-VARIABLES]
+  plot_var_1 = "pres"
+  plot_var_2 = "velx"
+  plot_var_3 = "vely"
+  plot_var_4 = "dfun"
+  plot_var_5 = "temp"
+  plot_var_6 = "mflx"
+  plot_var_7 = "velz"
+  ignoreForcedPlot = true
+
+[AMR-PARAMETERS]
+  nblockx = 100
+  nblocky = 10
+  nrefs = 10000000
+  lrefine_min = 1
+  lrefine_max = 1
+  flux_correct = true
+
+[POISSON-SOLVER]
+  gr_amrexMG_composite_solve = true
+  gr_amrexMG_Tol = 1.0e-12
+  gr_amrexMG_max_iter = 200
+  gr_hyprePrintSolveInfo = false
+  gr_hyprePcType = "HYPRE_AMG"
+  gr_hypreSolverType = "HYPRE_BICGSTAB"
+  gr_hypreRelTol = 1e-12
+  gr_hypreFloor = 1e-16
+
+[IO-RESTART]
+  nend = 1200000
+  tmax = 1.0
+  checkpointFileIntervalTime = 1.0
+  plotFileIntervalTime = 0.1
+  restart = false
+  checkpointFileNumber = 0
+  rolling_checkpoint = 2
+  plotFileNumber = 0

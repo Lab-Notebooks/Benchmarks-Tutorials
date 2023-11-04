@@ -1,16 +1,16 @@
 # Top level configuration file for Rising Bubble problem
 
-[Bubble]
-  sim_bubbleRadius = 0.25
+[BUBBLE]
+  sim_bubbleRadius = 0.5
 
-[Domain]
+[DOMAIN]
   geometry = "cartesian"
-  xmin = -0.5
-  xmax = 0.5
-  ymin = -0.5
-  ymax = 1.5
+  xmin = -1.0
+  xmax = 1.0
+  ymin = -1.0
+  ymax = 3.0
 
-[Boundary-Conditions] 
+[BOUNDARY-CONDITIONS] 
   xl_boundary_type = "noslip_ins"
   xr_boundary_type = "noslip_ins"
   yl_boundary_type = "noslip_ins"
@@ -18,32 +18,19 @@
   zl_boundary_type = "noslip_ins"
   zr_boundary_type = "noslip_ins"
 
-[Run-Information]  
+[RUN-INFORMATION]  
   run_comment = "Rising Bubble problem"
   log_file = "INS_Rising_Bubble.log"
   basenm = "INS_Rising_Bubble_"
 
-[Temporal-Stability]
+[TEMPORAL-STABILITY]
   ins_cflFlg = 1
   ins_cfl = 0.05
   ins_sigma = 0.05
   tstep_change_factor = 1.0
   ins_pressureCorrect = false
 
-[IO-Restart]
-  restart = false
-  nend = 10000000
-  tmax = 10 
-  checkpointFileIntervalTime = 1.0
-  checkpointFileIntervalStep = 0
-  plotFileIntervalTime = 1.0
-  plotFileIntervalStep = 0
-  plot_var_1 = "pres"
-  plot_var_2 = "velx"
-  plot_var_3 = "vely"
-  plot_var_4 = "dfun"
- 
-[Poisson-Solver]
+[POISSON-SOLVER] 
   gr_amrexMG_composite_solve = true
   gr_amrexMG_Tol = 1e-13
   gr_amrexMG_max_iter = 200
