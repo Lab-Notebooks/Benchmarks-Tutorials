@@ -1,0 +1,11 @@
+[AMR-RESOLUTION]
+  nblockx = 10
+  nblocky = 20
+  nrefs = 10000
+  lrefine_min = 1
+  lrefine_max = 1
+
+[TEMPORAL-STABILITY]
+  ins_dtSpec = 1.25e-5
+  dtinit = 1.25e-5
+  dtmax = 1.25e-5

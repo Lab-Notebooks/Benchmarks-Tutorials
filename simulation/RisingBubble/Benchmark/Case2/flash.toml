@@ -16,10 +16,10 @@
 [FLUID-PROPERTIES]
   ins_invReynolds = 0.0285
   ins_gravY = -1.0
-  mph_rhoGas = 0.1
-  mph_muGas = 0.1
+  mph_rhoGas = 0.001
+  mph_muGas = 0.01
   mph_iPropSmear = 1.0
-  mph_invWeber = 0.1
+  mph_invWeber = 0.008
 
 [SCALES]
   length = 0.5

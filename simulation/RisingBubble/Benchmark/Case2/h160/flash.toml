@@ -1,0 +1,18 @@
+[IO-RESTART]
+  restart = false
+  nend = 10000000
+  tmax = 10
+  checkpointFileNumber = 0
+  plotfileNumber = 0
+
+[AMR-RESOLUTION]
+  nblockx = 20
+  nblocky = 40
+  nrefs = 10000
+  lrefine_min = 1
+  lrefine_max = 1
+
+[TEMPORAL-STABILITY]
+  ins_dtSpec = 3.125e-6
+  dtinit = 3.125e-6
+  dtmax = 3.125e-6

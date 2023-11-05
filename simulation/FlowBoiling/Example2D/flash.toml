@@ -87,7 +87,8 @@
   dtmax = 0.4e-3
   tstep_change_factor = 1.01
   ins_pressureCorrect = false
-  ins_intSchm = 2
+  ins_intSchm = 1
+  ht_intSchm = 1
 
 [PLOT-VARIABLES]
   plot_var_1 = "pres"

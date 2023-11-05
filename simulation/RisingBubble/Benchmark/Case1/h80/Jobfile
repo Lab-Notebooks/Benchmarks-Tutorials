@@ -5,3 +5,15 @@
 job:
   input:
     - flash.toml
+  archive:
+    - flash.par
+    - "*_hdf5_*"
+    - "*.log"
+    - "*.out"
+  clean:
+    - flash.par
+    - "*_hdf5_*"
+    - "*.log"
+    - "unitTest*"
+    - "*.out"
+    - "*.log"

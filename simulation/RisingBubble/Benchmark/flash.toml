@@ -24,11 +24,13 @@
   basenm = "INS_Rising_Bubble_"
 
 [TEMPORAL-STABILITY]
-  ins_cflFlg = 1
+  ins_cflFlg = 0
   ins_cfl = 0.05
   ins_sigma = 0.05
   tstep_change_factor = 1.0
   ins_pressureCorrect = false
+  ins_intSchm = 1
+  mph_lsIt = 2
 
 [POISSON-SOLVER] 
   gr_amrexMG_composite_solve = true
