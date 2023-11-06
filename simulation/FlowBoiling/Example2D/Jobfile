@@ -18,6 +18,7 @@ job:
     - "*_hdf5_*"
   clean:
     - flashx
+    - setup_params
     - flash.par
     - amrex.pc
     - "*_hdf5_plt_*"

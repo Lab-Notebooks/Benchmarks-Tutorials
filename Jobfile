@@ -14,8 +14,6 @@
 # when either setting up or submitting a job
 #
 
-instrument: Flash-X
-
 schedular:
   command: sbatch
   options:

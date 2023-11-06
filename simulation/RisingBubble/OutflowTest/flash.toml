@@ -2,8 +2,12 @@
 
 [Simulation]
   sim_bubbleRadius = 0.5
+
+[Logfile]
   run_comment = "Rising Bubble problem"
   log_file = "INS_Rising_Bubble.log"
+
+[IO]
   basenm = "INS_Rising_Bubble_"
 
 [Grid]
@@ -12,8 +16,8 @@
   xmax = 1.0
   ymin = -1.0
   ymax = 3.0
-  xl_boundary_type = "noslip_ins"
-  xr_boundary_type = "noslip_ins"
+  xl_boundary_type = "slip_ins"
+  xr_boundary_type = "slip_ins"
   yl_boundary_type = "noslip_ins"
   yr_boundary_type = "outflow_ins"
   zl_boundary_type = "noslip_ins"

@@ -1,5 +1,4 @@
 [IO]
-  restart = false
   checkpointFileIntervalTime = 1.0
   checkpointFileIntervalStep = 0
   plotFileIntervalTime = 0.1
@@ -32,6 +31,7 @@
   lrefine_max = 1
 
 [Driver]
+  restart = false
   nend = 10000000
   tmax = 5
   dtinit = 1.25e-5

@@ -12,8 +12,8 @@ job:
   input:
     - flash.toml
   archive:
-    - flashx
     - amrex.pc
   clean:
+    - setup_params
     - flashx
     - amrex.pc

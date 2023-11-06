@@ -1,9 +1,11 @@
 # Input file to set runtime parameters
 
-[Simulation]
+[Logfile]
   run_comment = "Flow Boiling problem"
   log_file = "INS_Flow_Boiling.log"
-  basenm = "INS_Flow_Boiling_"
+
+[Timers]
+  CSVSummaryAllProcs = true
 
 [Heater]
   sim_heaterName = "flow_boiling"
@@ -80,6 +82,8 @@
   ins_intSchm = 1
   length = 1e-3
   time = 10e-3
+
+[Simulation]
   sim_outletBuffer = 2.0
 
 [Multiphase]
@@ -97,6 +101,7 @@
   ht_intSchm = 1
 
 [Driver]
+  restart = false
   nend = 1200000
   tmax = 1.0
   dtinit = 0.1e-3
@@ -104,9 +109,9 @@
   tstep_change_factor = 1.01
 
 [IO]
+  basenm = "INS_Flow_Boiling_"
   checkpointFileIntervalTime = 1.0
   plotFileIntervalTime = 0.1
-  restart = false
   checkpointFileNumber = 0
   rolling_checkpoint = 2
   plotFileNumber = 0
@@ -118,4 +123,3 @@
   plot_var_6 = "mflx"
   plot_var_7 = "velz"
   ignoreForcedPlot = true
-  CSVSummaryAllProcs = true
