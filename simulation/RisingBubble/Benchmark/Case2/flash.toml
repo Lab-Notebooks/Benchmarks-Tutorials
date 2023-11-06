@@ -1,7 +1,8 @@
-[IO-RESTART]
-  restart = false
+[Driver]
   nend = 10000000
   tmax = 5
+
+[IO]
   checkpointFileIntervalTime = 1.0
   checkpointFileIntervalStep = 0
   plotFileIntervalTime = 0.1
@@ -13,15 +14,15 @@
   plot_var_5 = "visc"
   plot_var_6 = "rhoc"
 
-[FLUID-PROPERTIES]
+[IncompNS]
   ins_invReynolds = 0.0285
   ins_gravY = -1.0
+  length = 0.5
+  time = 0.714
+  velocity = 0.7
+
+[Multiphase]
   mph_rhoGas = 0.001
   mph_muGas = 0.01
   mph_iPropSmear = 1.0
   mph_invWeber = 0.008
-
-[SCALES]
-  length = 0.5
-  time = 0.714
-  velocity = 0.7

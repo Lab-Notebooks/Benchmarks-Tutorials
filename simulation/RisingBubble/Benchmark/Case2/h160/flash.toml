@@ -1,18 +1,20 @@
-[IO-RESTART]
+[IO]
   restart = false
-  nend = 10000000
-  tmax = 10
   checkpointFileNumber = 0
   plotfileNumber = 0
 
-[AMR-RESOLUTION]
+[Grid]
   nblockx = 20
   nblocky = 40
   nrefs = 10000
   lrefine_min = 1
   lrefine_max = 1
 
-[TEMPORAL-STABILITY]
+[IncompNS]
   ins_dtSpec = 3.125e-6
+
+[Driver]
+  nend = 10000000
+  tmax = 8
   dtinit = 3.125e-6
   dtmax = 3.125e-6

@@ -1,11 +1,13 @@
-[AMR-RESOLUTION]
+[Grid]
   nblockx = 10
   nblocky = 20
   nrefs = 10000
   lrefine_min = 1
   lrefine_max = 1
 
-[TEMPORAL-STABILITY]
+[IncompNS]
   ins_dtSpec = 6.25e-4
+
+[Driver]
   dtinit = 6.25e-4
   dtmax = 6.25e-4

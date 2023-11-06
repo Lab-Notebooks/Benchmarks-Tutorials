@@ -1,0 +1,3 @@
+[IncompNS]
+  sim_outletBuffer = 1.0
+  sim_outletGrowthRate = 4.0

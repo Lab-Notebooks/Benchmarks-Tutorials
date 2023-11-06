@@ -1,7 +1,3 @@
-[Driver]
-  nend = 10000000
-  tmax = 5
-
 [IO]
   restart = false
   checkpointFileIntervalTime = 1.0
@@ -12,18 +8,31 @@
   plot_var_2 = "velx"
   plot_var_3 = "vely"
   plot_var_4 = "dfun"
-  plot_var_5 = "visc"
-  plot_var_6 = "rhoc"
+  plot_var_7 = "dust"
 
 [IncompNS]
   ins_invReynolds = 0.0285
   ins_gravY = -1.0
+  ins_dtSpec = 1.25e-5
   length = 0.5
   time = 0.714
   velocity = 0.7
 
 [Multiphase]
-  mph_rhoGas = 0.1
-  mph_muGas = 0.1
+  mph_rhoGas = 0.001
+  mph_muGas = 0.01
   mph_iPropSmear = 1.0
-  mph_invWeber = 0.1
+  mph_invWeber = 0.008
+
+[Grid]
+  nblockx = 10
+  nblocky = 20
+  nrefs = 10000
+  lrefine_min = 1
+  lrefine_max = 1
+
+[Driver]
+  nend = 10000000
+  tmax = 5
+  dtinit = 1.25e-5
+  dtmax = 1.25e-5

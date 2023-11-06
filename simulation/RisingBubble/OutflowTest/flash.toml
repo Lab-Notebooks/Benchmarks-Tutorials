@@ -15,7 +15,7 @@
   xl_boundary_type = "noslip_ins"
   xr_boundary_type = "noslip_ins"
   yl_boundary_type = "noslip_ins"
-  yr_boundary_type = "noslip_ins"
+  yr_boundary_type = "outflow_ins"
   zl_boundary_type = "noslip_ins"
   zr_boundary_type = "noslip_ins"
   gr_amrexMG_composite_solve = true
@@ -30,8 +30,8 @@
   ins_cfl = 0.05
   ins_sigma = 0.05
   ins_pressureCorrect = false
-  ins_intSchm = 1 # Euler explicit
-  ins_advSchm = 105 # WENO5
+  ins_intSchm = 1
+  ins_advSchm = 105
 
 [Multiphase]
   mph_lsIt = 2
