@@ -3,7 +3,7 @@
 [Simulation]
   sim_bubbleRadius = 0.5
   sim_lengthScaleMeters = 0.5
-  sim_timeScaleMeters = 0.714
+  sim_timeScaleSeconds = 0.714
 
 [Logfile]
   run_comment = "Rising Bubble problem"
