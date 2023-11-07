@@ -20,6 +20,8 @@
   plot_var_3 = "vely"
   plot_var_4 = "dfun"
   plot_var_7 = "dust"
+  wall_clock_checkpoint = 6000
+  ignoreForcedPlot = true
 
 [Grid]
   geometry = "cartesian"

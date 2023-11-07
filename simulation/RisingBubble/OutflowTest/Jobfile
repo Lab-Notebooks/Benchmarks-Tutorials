@@ -8,6 +8,7 @@ job:
     - flashOptions.sh
     - flashBuild.sh
   submit:
+    - calResources.sh
     - flashRun.sh
   input:
     - flash.toml

@@ -8,6 +8,10 @@
 [IncompNS]
   ins_dtSpec = 7.8125e-7
 
+[IO]
+  ignoreForcedPlot = true
+
 [Driver]
+  wall_clock_time_limit = 7200
   dtinit = 7.8125e-7
   dtmax = 7.8125e-7

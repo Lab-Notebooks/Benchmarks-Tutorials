@@ -8,6 +8,12 @@
 [IncompNS]
   ins_dtSpec = 3.125e-6
 
+[IO]
+  checkpointFileNumber = 0
+  plotFileNumber = 0
+
 [Driver]
+  restart = false
+  wall_clock_time_limit = 7200
   dtinit = 3.125e-6
   dtmax = 3.125e-6
