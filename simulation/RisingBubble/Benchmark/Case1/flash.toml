@@ -1,9 +1,9 @@
 [Driver]
+  restart = false
   nend = 10000000
   tmax = 5
 
 [IO]
-  restart = false
   checkpointFileIntervalTime = 1.0
   checkpointFileIntervalStep = 0
   plotFileIntervalTime = 0.1
@@ -18,9 +18,10 @@
 [IncompNS]
   ins_invReynolds = 0.0285
   ins_gravY = -1.0
-  length = 0.5
-  time = 0.714
-  velocity = 0.7
+
+[Simulation]
+  sim_lengthScaleMeters = 0.5
+  sim_timeScaleSeconds = 0.714
 
 [Multiphase]
   mph_rhoGas = 0.1

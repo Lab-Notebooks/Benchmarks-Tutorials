@@ -2,6 +2,8 @@
 
 [Simulation]
   sim_bubbleRadius = 0.5
+  sim_lengthScaleMeters = 0.5
+  sim_timeScaleMeters = 0.714
 
 [Logfile]
   run_comment = "Rising Bubble problem"
@@ -9,6 +11,15 @@
 
 [IO]
   basenm = "INS_Rising_Bubble_"
+  checkpointFileIntervalTime = 1.0
+  checkpointFileIntervalStep = 0
+  plotFileIntervalTime = 0.1
+  plotFileIntervalStep = 0
+  plot_var_1 = "pres"
+  plot_var_2 = "velx"
+  plot_var_3 = "vely"
+  plot_var_4 = "dfun"
+  plot_var_7 = "dust"
 
 [Grid]
   geometry = "cartesian"
@@ -28,7 +39,10 @@
 
 [Driver]
   tstep_change_factor = 1.0
-
+  restart = false
+  nend = 10000000
+  tmax = 5
+ 
 [IncompNS]
   ins_cflFlg = 0
   ins_cfl = 0.05
@@ -36,6 +50,12 @@
   ins_pressureCorrect = false
   ins_intSchm = 1
   ins_advSchm = 105
+  ins_invReynolds = 0.0285
+  ins_gravY = -1.0
 
 [Multiphase]
   mph_lsIt = 2
+  mph_rhoGas = 0.001
+  mph_muGas = 0.01
+  mph_iPropSmear = 1.0
+  mph_invWeber = 0.008

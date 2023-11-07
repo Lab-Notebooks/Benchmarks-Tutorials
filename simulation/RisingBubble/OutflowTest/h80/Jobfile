@@ -1,0 +1,5 @@
+# YAML configuration file for `jobrunner`.
+
+job:
+  input:
+    - flash.toml
