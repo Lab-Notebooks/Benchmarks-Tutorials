@@ -10,8 +10,11 @@
 
 [IO]
   ignoreForcedPlot = true
+  checkpointFileNumber = 1
+  plotFileNumber = 5
 
 [Driver]
-  wall_clock_time_limit = 7200
+  restart = true
+  wall_clock_time_limit = 7000
   dtinit = 7.8125e-7
   dtmax = 7.8125e-7

@@ -1,3 +1,10 @@
 [Simulation]
-  sim_outletBuffer = 1.0
+  sim_outletBuffer = 0.5
   sim_outletGrowthRate = 4.0
+
+[IO]
+  checkpointFileNumber = 2
+  plotFileNumber = 15
+
+[Driver]
+  restart = true

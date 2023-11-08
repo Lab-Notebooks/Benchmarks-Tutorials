@@ -14,6 +14,6 @@
 
 [Driver]
   restart = false
-  wall_clock_time_limit = 7200
+  wall_clock_time_limit = 7000
   dtinit = 3.125e-6
   dtmax = 3.125e-6
