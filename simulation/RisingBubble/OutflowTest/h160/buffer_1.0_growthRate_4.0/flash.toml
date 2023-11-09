@@ -3,8 +3,8 @@
   sim_outletGrowthRate = 4.0
 
 [IO]
-  checkpointFileNumber = 2
-  plotFileNumber = 16
+  checkpointFileNumber = 5
+  plotFileNumber = 36
 
 [Driver]
   restart = true 
