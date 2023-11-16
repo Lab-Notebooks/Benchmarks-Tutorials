@@ -13,4 +13,4 @@ results in a configuration dominated by diffusion and is designed to test limita
 our open-source software, Flash-X, which uses a fully explicit method for solving Multiphase 
 Navier-Stokes equations.
 
-<p align="center"> <img src="analysis/RisingBubble/Benchmark-Case2.gif" width="600" style="border:none;background:none;"/> </p>
+<p align="center"> <img src="analysis/RisingBubble/animation.gif" width="600" style="border:none;background:none;"/> </p>
