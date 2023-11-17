@@ -27,7 +27,7 @@ def process_dataset(dataset):
     merged_dataset.fill_guard_cells()
 
     bubblelist = flash_box.lset_shape_measurement_2d(merged_dataset, correction=True)
-    mean_velocity = flash_box.lset_vel_measurement_2d(merged_dataset)
+    quantlist = flash_box.lset_quant_measurement_2d(merged_dataset)
 
     max_bubble_area = 1e-13
     main_bubble = None
@@ -38,13 +38,14 @@ def process_dataset(dataset):
             main_bubble = bubble
             main_bubble_index = index
 
-    circularity = (2*numpy.pi*numpy.sqrt(main_bubble["area"]/numpy.pi)/main_bubble["perimeter"])[0]
-    center = main_bubble["centroid"][0] - SIM_YMIN
+    circularity = (2*numpy.pi*numpy.sqrt(main_bubble["area"]/numpy.pi)/main_bubble["perimeter"])
+    #center = main_bubble["centroid"][0] - SIM_YMIN
+    center = quantlist[main_bubble_index]["centroid"][0] - SIM_YMIN
     area = main_bubble["area"]
-    velocity = mean_velocity[main_bubble_index, 0]
+    velocity = quantlist[main_bubble_index]["velocity"][0]
     time = dataset.time
 
-    return numpy.array([time, area, circularity, center, velocity])
+    return numpy.array([float(time), float(area), float(circularity), float(center), float(velocity)])
 
 def case2_refinement_contour_dict():
     """
