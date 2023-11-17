@@ -26,38 +26,58 @@ def process_dataset(dataset):
     merged_dataset = boxkit.mergeblocks(dataset, ["dfun", "velx", "vely"])
     merged_dataset.fill_guard_cells()
 
-    bubblelist = flash_box.lset_shape_measurement_2d(merged_dataset, correction=True)
+    shapelist = flash_box.lset_shape_measurement_2d(merged_dataset, correction=True)
     quantlist = flash_box.lset_quant_measurement_2d(merged_dataset)
 
+    if len(shapelist) != len(quantlist):
+        raise ValueError(f"len(shapelist) == {len(shapelist)} and len(quantlist) == {len(quantlist)}")
+
     max_bubble_area = 1e-13
-    main_bubble = None
-    main_bubble_index = 0
+    main_bubble_shape = None
+    main_bubble_quant = None
 
-    for index, bubble in enumerate(bubblelist):
-        if bubble["area"] > max_bubble_area:
-            main_bubble = bubble
-            main_bubble_index = index
+    for shape, quant in zip(shapelist, quantlist):
+        if shape["area"] > max_bubble_area:
+            main_bubble_shape = shape
+            main_bubble_quant = quant
 
-    circularity = (2*numpy.pi*numpy.sqrt(main_bubble["area"]/numpy.pi)/main_bubble["perimeter"])
-    #center = main_bubble["centroid"][0] - SIM_YMIN
-    center = quantlist[main_bubble_index]["centroid"][0] - SIM_YMIN
-    area = main_bubble["area"]
-    velocity = quantlist[main_bubble_index]["velocity"][0]
+    circularity = (2*numpy.pi*numpy.sqrt(main_bubble_shape["area"]/numpy.pi)/main_bubble_shape["perimeter"])
+    center = main_bubble_quant["centroid"][0] - SIM_YMIN
+    area = main_bubble_shape["area"]
+    velocity = main_bubble_quant["velocity"][0]
     time = dataset.time
 
     return numpy.array([float(time), float(area), float(circularity), float(center), float(velocity)])
 
-def case2_refinement_contour_dict():
+def case2_grid_convergence_dict():
     """
-    Get dictionary to compare bubble contours for case 2
+    Get dictionary for grid independence study
     """
-    dataset_dir = dict()
+    dataset_dir = {}
     dataset_dir["Case2/h40"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case2/h40/jobnode.archive/2023-11-06"
     dataset_dir["Case2/h80"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case2/h80/jobnode.archive/2023-11-06"
     dataset_dir["Case2/h160"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case2/h160/jobnode.archive/2023-11-07"
     dataset_dir["Case2/h320"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case2/h320/jobnode.archive/2023-11-11"
 
-    file_tags = dict()
+    file_tags = {}
+    file_tags["Case2/h40"] = [29]
+    file_tags["Case2/h80"] = [29]
+    file_tags["Case2/h160"] = [29]
+    file_tags["Case2/h320"] = [36]
+
+    return dataset_dir, file_tags
+
+def case2_refinement_contour_dict():
+    """
+    Get dictionary to compare bubble contours for case 2
+    """
+    dataset_dir = {}
+    dataset_dir["Case2/h40"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case2/h40/jobnode.archive/2023-11-06"
+    dataset_dir["Case2/h80"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case2/h80/jobnode.archive/2023-11-06"
+    dataset_dir["Case2/h160"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case2/h160/jobnode.archive/2023-11-07"
+    dataset_dir["Case2/h320"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case2/h320/jobnode.archive/2023-11-11"
+
+    file_tags = {}
     file_tags["Case2/h40"] = [0,15,29,43,49]
     file_tags["Case2/h80"] = [0,15,29,43,49]
     file_tags["Case2/h160"] = [0,15,29,43,49]
@@ -69,13 +89,13 @@ def case2_outflow_contour_dict():
     """
     Get dictionary to compare bubble contours for case 2
     """
-    dataset_dir = dict()
+    dataset_dir = {}
     dataset_dir["Case2/h160/lb0.5"] = f"{SIM_PATH}/RisingBubble/OutflowTest/h160/buffer_0.5_growthRate_4.0/jobnode.archive/2023-11-08"
     dataset_dir["Case2/h160/lb1.0"] = f"{SIM_PATH}/RisingBubble/OutflowTest/h160/buffer_1.0_growthRate_4.0/jobnode.archive/2023-11-08"
     dataset_dir["Case2/h160/lb1.5"] = f"{SIM_PATH}/RisingBubble/OutflowTest/h160/buffer_1.5_growthRate_4.0/jobnode.archive/2023-11-08"
     dataset_dir["Case2/h160"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case2/h160/jobnode.archive/2023-11-07"
 
-    file_tags = dict()
+    file_tags = {}
     file_tags["Case2/h160/lb0.5"] = [0,16,30,45,51]
     file_tags["Case2/h160/lb1.0"] = [0,15,30,45,51]
     file_tags["Case2/h160/lb1.5"] = [0,16,30,45,51]
@@ -87,13 +107,13 @@ def case2_refinement_dict():
     """
     Get dictionary for gird refinement study for case 2
     """
-    dataset_dir = dict()
+    dataset_dir = {}
     dataset_dir["Case2/h40"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case2/h40/jobnode.archive/2023-11-06"
     dataset_dir["Case2/h80"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case2/h80/jobnode.archive/2023-11-06"
     dataset_dir["Case2/h160"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case2/h160/jobnode.archive/2023-11-07"
     dataset_dir["Case2/h320"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case2/h320/jobnode.archive/2023-11-11"
 
-    file_tags = dict()
+    file_tags = {}
     file_tags["Case2/h40"] = [*range(51)]
     file_tags["Case2/h80"] = [*range(51)]
     file_tags["Case2/h160"] = [*range(51)]
@@ -106,13 +126,13 @@ def case1_refinement_dict():
     """
     Get dictionary for gird refinement study for case 1
     """
-    dataset_dir = dict()
+    dataset_dir = {}
     dataset_dir["Case1/h40"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case1/h40/jobnode.archive/2023-11-06"
     dataset_dir["Case1/h80"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case1/h80/jobnode.archive/2023-11-06"
     dataset_dir["Case1/h160"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case1/h160/jobnode.archive/2023-11-06"
     dataset_dir["Case1/h320"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case1/h320/jobnode.archive/2023-11-08"
 
-    file_tags = dict()
+    file_tags = {}
     file_tags["Case1/h40"] = [*range(51)]
     file_tags["Case1/h80"] = [*range(51)]
     file_tags["Case1/h160"] = [*range(51)]
@@ -125,13 +145,13 @@ def case2_outflow_dict():
     """
     Get dictionary for outflow study for case 2
     """
-    dataset_dir = dict()
+    dataset_dir = {}
     dataset_dir["Case2/h160/lb0.5"] = f"{SIM_PATH}/RisingBubble/OutflowTest/h160/buffer_0.5_growthRate_4.0/jobnode.archive/2023-11-08"
     dataset_dir["Case2/h160/lb1.0"] = f"{SIM_PATH}/RisingBubble/OutflowTest/h160/buffer_1.0_growthRate_4.0/jobnode.archive/2023-11-08"
     dataset_dir["Case2/h160/lb1.5"] = f"{SIM_PATH}/RisingBubble/OutflowTest/h160/buffer_1.5_growthRate_4.0/jobnode.archive/2023-11-08"
     dataset_dir["Case2/h160"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case2/h160/jobnode.archive/2023-11-07"
 
-    file_tags = dict()
+    file_tags = {}
     file_tags["Case2/h160/lb0.5"] = [*range(53)]
     file_tags["Case2/h160/lb1.0"] = [*range(53)]
     file_tags["Case2/h160/lb1.5"] = [*range(53)]
