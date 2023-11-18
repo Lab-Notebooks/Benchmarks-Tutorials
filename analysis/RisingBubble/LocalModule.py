@@ -120,10 +120,29 @@ def case2_time_convergence_dict():
     dataset_dir["Case2/h320"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case2/h320/jobnode.archive/2023-11-11"
 
     file_tags = {}
-    file_tags["Case2/h40"] = [*range(51)]
-    file_tags["Case2/h80"] = [*range(51)]
-    file_tags["Case2/h160"] = [*range(51)]
+    file_tags["Case2/h40"] = [*range(40)]
+    file_tags["Case2/h80"] = [*range(40)]
+    file_tags["Case2/h160"] = [*range(40)]
     file_tags["Case2/h320"] = [*range(62)]
+
+    return dataset_dir, file_tags
+
+
+def case1_time_convergence_dict():
+    """
+    Get dictionary for grid independence study
+    """
+    dataset_dir = {}
+    dataset_dir["Case1/h40"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case1/h40/jobnode.archive/2023-11-06"
+    dataset_dir["Case1/h80"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case1/h80/jobnode.archive/2023-11-06"
+    dataset_dir["Case1/h160"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case1/h160/jobnode.archive/2023-11-06"
+    dataset_dir["Case1/h320"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case1/h320/jobnode.archive/2023-11-08"
+
+    file_tags = {}
+    file_tags["Case1/h40"] = [*range(51)]
+    file_tags["Case1/h80"] = [*range(51)]
+    file_tags["Case1/h160"] = [*range(51)]
+    file_tags["Case1/h320"] = [*range(51)]
 
     return dataset_dir, file_tags
 
