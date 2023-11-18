@@ -49,6 +49,47 @@ def process_dataset(dataset):
 
     return numpy.array([float(time), float(area), float(circularity), float(center), float(velocity)])
 
+def compute_norm(fine_datasets, coarse_datasets, order=None, scale=None):
+    """
+    Compute norm between two datasets
+    """
+    varlist = ["dfun", "velx", "vely"]
+
+    fine_blocks =  [boxkit.mergeblocks(dataset, varlist).blocklist[0] for dataset in fine_datasets]
+    coarse_blocks = [boxkit.mergeblocks(dataset, varlist).blocklist[0] for dataset in coarse_datasets]
+
+    norm = dict(zip(varlist, [0.]*len(varlist)))
+
+    for fblock, cblock in zip(fine_blocks, coarse_blocks):
+
+        if not scale:
+            scale = {"coarse": 1, "fine": int(cblock.dx/fblock.dx)}
+
+        for var in varlist:
+            cdata = cblock[var][0,cblock.yguard:cblock.nyb+cblock.yguard, cblock.xguard:cblock.nxb+cblock.xguard]        
+            fdata = fblock[var][0,fblock.yguard:fblock.nyb+fblock.yguard, fblock.xguard:fblock.nxb+fblock.xguard]
+
+            cwork = get_offset_data(cdata, scale["coarse"])
+            fwork = get_offset_data(fdata, scale["fine"])
+
+            norm[var] = norm[var] + numpy.linalg.norm(fwork-cwork, ord=order)/len(coarse_blocks)
+
+    return norm
+
+def get_offset_data(data, scale):
+    """
+    Offset data
+    """
+    if scale == 1:
+        work = data
+    else:
+        work = 0.
+        for xoff in range(scale):
+            for yoff in range(scale):
+                work = work + data[yoff::scale, xoff::scale]/(scale**2)
+
+    return work
+
 def case2_grid_convergence_dict():
     """
     Get dictionary for grid independence study
@@ -60,12 +101,32 @@ def case2_grid_convergence_dict():
     dataset_dir["Case2/h320"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case2/h320/jobnode.archive/2023-11-11"
 
     file_tags = {}
-    file_tags["Case2/h40"] = [29]
-    file_tags["Case2/h80"] = [29]
-    file_tags["Case2/h160"] = [29]
-    file_tags["Case2/h320"] = [36]
+    file_tags["Case2/h40"] = [43]
+    file_tags["Case2/h80"] = [43]
+    file_tags["Case2/h160"] = [43]
+    file_tags["Case2/h320"] = [53]
 
     return dataset_dir, file_tags
+
+
+def case2_time_convergence_dict():
+    """
+    Get dictionary for grid independence study
+    """
+    dataset_dir = {}
+    dataset_dir["Case2/h40"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case2/h40/jobnode.archive/2023-11-06"
+    dataset_dir["Case2/h80"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case2/h80/jobnode.archive/2023-11-06"
+    dataset_dir["Case2/h160"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case2/h160/jobnode.archive/2023-11-07"
+    dataset_dir["Case2/h320"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case2/h320/jobnode.archive/2023-11-11"
+
+    file_tags = {}
+    file_tags["Case2/h40"] = [*range(51)]
+    file_tags["Case2/h80"] = [*range(51)]
+    file_tags["Case2/h160"] = [*range(51)]
+    file_tags["Case2/h320"] = [*range(62)]
+
+    return dataset_dir, file_tags
+
 
 def case2_refinement_contour_dict():
     """
@@ -85,6 +146,7 @@ def case2_refinement_contour_dict():
 
     return dataset_dir, file_tags
 
+
 def case2_outflow_contour_dict():
     """
     Get dictionary to compare bubble contours for case 2
@@ -102,6 +164,7 @@ def case2_outflow_contour_dict():
     file_tags["Case2/h160"] = [0,15,29,43,49]
 
     return dataset_dir, file_tags
+
 
 def case2_refinement_dict():
     """
@@ -158,6 +221,7 @@ def case2_outflow_dict():
     file_tags["Case2/h160"] = [*range(51)]
 
     return dataset_dir, file_tags
+
 
 if __name__ == "__main__":
     """
