@@ -13,6 +13,7 @@
   plot_var_4 = "dfun"
   plot_var_5 = "visc"
   plot_var_6 = "rhoc"
+  plot_var_7 = "dust"
 
 [IncompNS]
   ins_invReynolds = 0.0285

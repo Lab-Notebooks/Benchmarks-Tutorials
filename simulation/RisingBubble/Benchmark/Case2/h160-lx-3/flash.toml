@@ -3,12 +3,14 @@
   plotFileNumber = 0
 
 [Grid]
-  nblockx = 20
+  nblockx = 30
   nblocky = 40
   nrefs = 10000
   lrefine_min = 1
   lrefine_max = 1
-
+  xmin = -1.5
+  xmax = 1.5
+ 
 [IncompNS]
   ins_dtSpec = 3.125e-6
 
