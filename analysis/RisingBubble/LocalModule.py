@@ -185,6 +185,21 @@ def case2_outflow_contour_dict():
     return dataset_dir, file_tags
 
 
+def case2_width_dict():
+    """
+    Get dictionary for gird refinement study for case 2
+    """
+    dataset_dir = {}
+    dataset_dir["Case2/h160"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case2/h160/jobnode.archive/2023-11-07"
+    dataset_dir["Case2/h160-lx-3"] = f"{SIM_PATH}/RisingBubble/Benchmark/Case2/h160-lx-3/jobnode.archive/2023-11-21"
+
+    file_tags = {}
+    file_tags["Case2/h160"] = [*range(51)]
+    file_tags["Case2/h160-lx-3"] = [*range(51)]
+
+    return dataset_dir, file_tags
+
+
 def case2_refinement_dict():
     """
     Get dictionary for gird refinement study for case 2
