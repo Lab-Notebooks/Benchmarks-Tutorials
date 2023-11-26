@@ -1,0 +1,3 @@
+# Top level configuration file for Pool Boiling problem
+[Simulation]
+  sim_outletBuffer = 1.0
