@@ -4,6 +4,7 @@
   sim_bubbleRadius = 0.25
   sim_outletBuffer = 1.0
   sim_outletGrowthRate = 4.0
+  enableMaskedGCFill = false
 
 [Logfile]
   run_comment = "Evaporating Bubble problem"
