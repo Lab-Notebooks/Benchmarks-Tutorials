@@ -2,4 +2,4 @@
 
 FlashSha="1aff5889"
 
-FlashOptions="$FlashOptions SimForcInOut=True"
+FlashOptions="$FlashOptions SimForceInOut=True"
