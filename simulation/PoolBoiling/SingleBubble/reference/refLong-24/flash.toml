@@ -1,0 +1,11 @@
+# Top level configuration file for Pool Boiling problem
+[Grid]
+  ymax = 24.0
+  nblocky = 72
+
+[Driver]
+  restart = true
+
+[IO]
+  checkpointFileNumber = 8
+  plotFileNumber = 79 
