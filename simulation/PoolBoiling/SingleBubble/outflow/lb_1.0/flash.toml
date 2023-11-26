@@ -1,3 +1,10 @@
 # Top level configuration file for Pool Boiling problem
 [Simulation]
   sim_outletBuffer = 1.0
+
+[Driver]
+  restart = true
+
+[IO]
+  checkpointFileNumber = 15
+  plotFileNumber = 146
