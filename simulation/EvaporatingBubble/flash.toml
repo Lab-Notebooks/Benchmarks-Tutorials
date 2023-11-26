@@ -56,7 +56,6 @@
   dtinit = 0.25e-4
   dtmax = 0.25e-4
   tstep_change_factor = 1.0
-  restart = false
   nend = 10000000
   tmax = 10
 

@@ -14,7 +14,19 @@ job:
     - flash.toml
   archive:
     - amrex.pc
+    - flash.par
+    - "INS*"
+    - "*_hdf5_*"
+    - "*.log"
+    - "*.out" 
   clean:
     - setup_params
     - flashx
     - amrex.pc
+    - flash.par
+    - "INS*"
+    - "*_hdf5_*"
+    - "*.log"
+    - "unitTest*"
+    - "*.out"
+    - "*.log"
