@@ -1,11 +1,11 @@
 [Driver]
-  restart = false
+  restart = true
 
 [IO]
-  checkpointFileNumber = 0
-  plotFileNumber = 0
+  checkpointFileNumber = 7
+  plotFileNumber = 34
 
 [Grid]
   ymax = 32
   nblocky = 64
-  gr_amrexMG_Tol = 1e-12 
+  gr_amrexMG_Tol = 1e-13
