@@ -14,3 +14,20 @@ our open-source software, Flash-X, which uses a fully explicit method for solvin
 Navier-Stokes equations.
 
 <p align="center"> <img src="analysis/RisingBubble/animation.gif" width="600" style="border:none;background:none;"/> </p>
+
+
+### Citation
+
+```
+@software{akash_dhruv_2023_10215417,
+  author       = {Akash Dhruv},
+  title        = {{Lab-Notebooks/Outflow-Forcing-Revised: zenodo 
+                   archive}},
+  month        = nov,
+  year         = 2023,
+  publisher    = {Zenodo},
+  version      = {zenodo},
+  doi          = {10.5281/zenodo.10215417},
+  url          = {https://doi.org/10.5281/zenodo.10215417}
+}
+```
