@@ -1,4 +1,8 @@
 # Top level configuration file for Pool Boiling problem
+[Grid]
+  ymax = 24.0
+  nblocky = 72
+
 [Simulation]
   sim_outletBuffer = 1.0
 
@@ -6,5 +10,5 @@
   restart = true
 
 [IO]
-  checkpointFileNumber = 31
-  plotFileNumber = 292
+  checkpointFileNumber = 17
+  plotFileNumber = 156

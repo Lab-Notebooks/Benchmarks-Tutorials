@@ -6,5 +6,5 @@
   restart = true
 
 [IO]
-  checkpointFileNumber = 15
-  plotFileNumber = 150
+  checkpointFileNumber = 32
+  plotFileNumber = 302
