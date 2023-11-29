@@ -82,7 +82,7 @@ def lb_comparison_dict():
 
     file_tags = {}
     #file_tags["reference"] = [*range(100)]
-    file_tags["reference"] = [*range(155)]
+    file_tags["reference"] = [*range(394)]
     file_tags["lb-0.5"] = [*range(450)]
     file_tags["lb-1.0"] = [*range(444)]
     file_tags["lb-1.5"] = [*range(442)]
@@ -113,16 +113,22 @@ def lb_noadv_contour_dict():
     """
     Comparison dict for bubble contours
     """
+    lb = "lb_1.0"
+
     dataset_dir = {}
     #dataset_dir["reference"] = f"{SIM_PATH}/SingleBubble/outflow/refLong-24/jobnode.archive/2023-11-28"
     dataset_dir["reference"] = f"{SIM_PATH}/SingleBubble/reference/refLong-24/jobnode.archive/2023-11-26-propSmear"
-    dataset_dir["lb-1.0-withAdv"] = f"{SIM_PATH}/SingleBubble/outflow/lb_1.0/jobnode.archive/2023-11-26-propSmear"
-    dataset_dir["lb-1.0-noAdv"] = f"{SIM_PATH}/SingleBubble/outflow/lb_1.0/jobnode.archive/2023-11-26-noAdvection"
+    dataset_dir["withAdv"] = f"{SIM_PATH}/SingleBubble/outflow/{lb}/jobnode.archive/2023-11-26-propSmear"
+    dataset_dir["withoutAdv"] = f"{SIM_PATH}/SingleBubble/outflow/{lb}/jobnode.archive/2023-11-26-noAdvection"
+
+
+    tag_list = [0, 10, 20, 30, 40, 50]
+    #tag_list = [90, 100, 110, 120, 130, 140]
 
     file_tags = {}
-    file_tags["reference"] = [0,10,20,30,40,50]
-    file_tags["lb-1.0-withAdv"] = [0,10,20,30,40,50]
-    file_tags["lb-1.0-noAdv"] = [0,10,20,30,40,50]
+    file_tags["reference"] = tag_list
+    file_tags["withAdv"] = tag_list
+    file_tags["withoutAdv"] = tag_list
 
     return dataset_dir, file_tags
 
@@ -132,18 +138,39 @@ def lb_noadv_comparison_dict():
     Comparison dict for different outflow buffers
     """
     dataset_dir = {}
-    dataset_dir["reference"] = f"{SIM_PATH}/SingleBubble/reference/refLong-24/jobnode.archive/2023-11-26-propSmear"
+    #dataset_dir["reference"] = f"{SIM_PATH}/SingleBubble/reference/refLong-24/jobnode.archive/2023-11-26-propSmear"
+    dataset_dir["reference"] = f"{SIM_PATH}/SingleBubble/outflow/refLong-24/jobnode.archive/2023-11-28"
     dataset_dir["lb-0.5"] = f"{SIM_PATH}/SingleBubble/outflow/lb_0.5/jobnode.archive/2023-11-26-noAdvection"
     dataset_dir["lb-1.0"] = f"{SIM_PATH}/SingleBubble/outflow/lb_1.0/jobnode.archive/2023-11-26-noAdvection"
     dataset_dir["lb-1.5"] = f"{SIM_PATH}/SingleBubble/outflow/lb_1.5/jobnode.archive/2023-11-26-noAdvection"
 
     file_tags = {}
-    file_tags["reference"] = [*range(100)]
+    file_tags["reference"] = [*range(235)]
     file_tags["lb-0.5"] = [*range(140)]
-    file_tags["lb-1.0"] = [*range(140)]
+    file_tags["lb-1.0"] = [*range(220)]
     file_tags["lb-1.5"] = [*range(140)]
 
     return dataset_dir, file_tags
+
+def lb_noadv_comparison2_dict():
+    """
+    Comparison dict for different outflow buffers
+    """
+    lb = "lb_1.0"
+
+    dataset_dir = {}
+    #dataset_dir["reference"] = f"{SIM_PATH}/SingleBubble/reference/refLong-24/jobnode.archive/2023-11-26-propSmear"
+    dataset_dir["reference"] = f"{SIM_PATH}/SingleBubble/outflow/refLong-24/jobnode.archive/2023-11-28"
+    dataset_dir["withAdv"] = f"{SIM_PATH}/SingleBubble/outflow/{lb}/jobnode.archive/2023-11-26-propSmear"
+    dataset_dir["withoutAdv"] = f"{SIM_PATH}/SingleBubble/outflow/{lb}/jobnode.archive/2023-11-26-noAdvection"
+
+    file_tags = {}
+    file_tags["reference"] = [*range(235)]
+    file_tags["withAdv"] = [*range(220)]
+    file_tags["withoutAdv"] = [*range(220)]
+
+    return dataset_dir, file_tags
+
 
 
 if __name__ == "__main__":
