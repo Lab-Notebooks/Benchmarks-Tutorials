@@ -182,10 +182,10 @@ def temp_stats_dict():
     dataset_dir["lb-1.5"] = f"{SIM_PATH}/SingleBubble/outflow/lb_1.5/jobnode.archive/2023-11-26-propSmear"
 
     file_tags = {}
-    file_tags["reference"] = [*range(5,390,5)]
-    file_tags["lb-0.5"] = [*range(5,440,5)]
-    file_tags["lb-1.0"] = [*range(5,440,5)]
-    file_tags["lb-1.5"] = [*range(5,440,5)]
+    file_tags["reference"] = [*range(1,390,1)]
+    file_tags["lb-0.5"] = [*range(1,440,1)]
+    file_tags["lb-1.0"] = [*range(1,440,1)]
+    file_tags["lb-1.5"] = [*range(1,440,1)]
 
     return dataset_dir, file_tags
 
