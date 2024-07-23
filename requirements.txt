@@ -1,6 +1,6 @@
 click
 scipy==1.9.3
 git+ssh://git@github.com/Box-Tools/BoxKit.git@main
-git+ssh://git@github.com/Lab-Notebooks/Jobrunner.git@2024.01
+git+ssh://git@github.com/Lab-Notebooks/Jobrunner.git@2024.01 --install-option="--with-instruments"
 git+ssh://git@github.com/akashdhruv/Maple.git@main
 git+ssh://git@github.com/Flash-X/Flash-X-Test.git@main
